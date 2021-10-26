@@ -30,6 +30,7 @@ function App () {
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      if (e.currentTarget.value === '') return
       addTodo(e.currentTarget.value)
       e.currentTarget.value = ""
     }
