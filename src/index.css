@@ -5,19 +5,20 @@
 :root {
   --primary: hsl(220, 98%, 61%);
   --secondary: linear-gradient(45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --border: hsl(233, 11%, 84%);
+  --text: hsl(236, 9%, 61%);
 }
 
 .light {
   --global: hsl(236, 33%, 92%);
   --blocks: hsl(0, 0%, 98%);
-  --border: hsl(233, 11%, 84%);
-  --text: hsl(236, 9%, 61%);
-  --heading: hsl(235, 19%, 35%);
+  --accent: hsl(235, 19%, 35%);
 }
 
 .dark {
   --global: hsl(235, 21%, 11%);
   --blocks: hsl(235, 24%, 19%);
+  --accent: hsl(234, 39%, 85%);
 }
 
 * {
