@@ -5,14 +5,8 @@ import sunIcon from "./images/icon-sun.svg"
 import lightBg from "./images/bg-desktop-light.jpg"
 import darkBg from "./images/bg-desktop-dark.jpg"
 import FilterBar from './components/FilterBar'
-import { Filters } from './types'
+import { Filters, Todo } from './types'
 import TodoCard from './components/TodoCard'
-
-interface Todo {
-  id: string
-  status: "completed" | 'active'
-  description: string
-}
 
 function App () {
 
