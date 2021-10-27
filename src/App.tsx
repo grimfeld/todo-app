@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 import './App.css'
 import moonIcon from "./images/icon-moon.svg"
 import sunIcon from "./images/icon-sun.svg"
@@ -20,9 +20,7 @@ function App () {
 
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
-  const switchTheme = () => {
-    setTheme(theme === "light" ? 'dark' : 'light')
-  }
+  const switchTheme = () => setTheme(theme === "light" ? 'dark' : 'light')
 
   const [todos, setTodos] = useState<Array<Todo>>([
     { id: getRandomId(), status: "active", description: "Try to complete me" },
@@ -36,27 +34,19 @@ function App () {
     e.currentTarget.value = ""
   }
 
-  const addTodo = (description: string) => {
-    setTodos(todos => [{ id: getRandomId(), status: 'active', description: description }, ...todos])
-  }
+  const addTodo = (description: string) => setTodos(todos => [{ id: getRandomId(), status: 'active', description: description }, ...todos])
 
-  const switchTodoStatus = (id: string) => {
-    setTodos(todos => todos.map(todo => todo.id === id ? { ...todo, status: todo.status === 'active' ? 'completed' : 'active' } : todo))
-  }
+  const switchTodoStatus = (id: string) => setTodos(todos => todos.map(todo => todo.id === id ? { ...todo, status: todo.status === 'active' ? 'completed' : 'active' } : todo))
 
-  const deleteTodo = (id: string) => {
-    setTodos(todos => todos.filter(todo => todo.id !== id))
-  }
+  const deleteTodo = (id: string) => setTodos(todos => todos.filter(todo => todo.id !== id))
 
-  const clearCompleted = () => {
-    setTodos(todos.filter(todo => todo.status === 'active'))
-  }
+  const clearCompleted = () => setTodos(todos.filter(todo => todo.status === 'active'))
 
   const [filter, setFilter] = useState<Filters>('all')
 
   const [filteredTodos, setFilteredTodos] = useState<Array<Todo>>([])
 
-  useEffect(() => {
+  useMemo(() => {
     setFilteredTodos(todos.filter(todo => filter === 'completed' ? todo.status === 'completed' : filter === 'active' ? todo.status === 'active' : todo))
   }, [filter, todos])
 
